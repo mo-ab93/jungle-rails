@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  get "/about", to: "about#index"
+  # get "/about", to: "about#index"
+  resources :about, only: [:index]
   
   root to: 'products#index'
 
@@ -16,6 +17,7 @@ Rails.application.routes.draw do
   namespace :admin do
     root to: 'dashboard#show'
     resources :products, except: [:edit, :update, :show]
+    resources :categories, only: [:index, :new, :create]
   end
 
   # The priority is based upon order of creation: first created -> highest priority.
