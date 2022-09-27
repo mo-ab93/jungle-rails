@@ -1,54 +1,63 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  describe 'Validations' do
-   
-      it 'is valid with valid attributes' do
-        
-        params = {
-        name:'moh',
-        email: 'moh@gmail',
-        password:'123',
-        password_confirmation:'123'
-        }
-        expect(User.new(params)).to be_valid
 
-      end
-      it 'should not be valid if password is less than 3 characters' do
-        params = {
-        name:'moh',
-        email: 'moh@gmail',
-        password:'12',
-        password_confirmation:'12'
-        }
-        expect(User.new(params)).to_not be_valid
-      end
-      it 'should not be valid if password and pass confirmation do not match' do
-        params = {
-        name:'moh',
-        email: 'moh@gmail',
-        password:'123',
-        password_confirmation:'1233'
-        }
-        expect(User.new(params)).to_not be_valid
-      end
-  
-      describe '.authenticate_with_credentials' do
-        it "checks the login and returns the authenticated user" do
-          user = User.create(name: "moh", :email => "moh@gmail", :password => "Abcdef", :password_confirmation => "Abcdef")
-          authenticated_user = User.authenticate_with_credentials("moh@gmail", "Abcdef")
-          expect(authenticated_user).to eq(user)
-        end
-        it "checks the login and returns nill if the login does not validate" do
-          user = User.create(name: "moh", :email => "moh@gmail", :password => "Abcdef", :password_confirmation => "Abcdef")
-          authenticated_user = User.authenticate_with_credentials("beb@bass", "Abcdef")
-          expect(authenticated_user).to eq(nil)
-        end
-        it "checks the login and returns authenticated user regardless of trailing spaces or capitaliztion" do
-          user = User.create(name: "moh", :email => "moh@gmail", :password => "Abcdef", :password_confirmation => "Abcdef")
-          authenticated_user = User.authenticate_with_credentials("moh@gmail ", "Abcdef")
-          expect(authenticated_user).to eq(user)
-        end
-      end
+  before(:each) do
+    @user = User.create(name: "Mohammed", last_name: "Abbas", email: "moh@mail.com", password: "123", password_confirmation: "123")
+  end
+
+  describe 'Validations' do
+
+    it 'is valid with valid attributes' do
+      expect(@user).to be_present
     end
+
+    it "should be created with a password and password confirmation fields" do 
+      @user.password = nil
+      @user.save
+      expect(@user.password).to_not be_present
+
+      @user.password_confirmation = nil
+      @user.save
+      expect(@user.password_confirmation).to_not be_present
+
+    end 
+
+    it "should have matching password and password confirmations" do
+      expect(@user.password).to eq(@user.password_confirmation)
+
+      @user.password_confirmation = "456"
+      @user.save
+      expect(@user.password).not_to eq(@user.password_confirmation)
+    end
+
+    it "should have a unique email" do
+      @user = User.new(name: "Mohammed", last_name: "Abbas", email: "Moh@mail.com", password: "123", password_confirmation: "123")
+      @user.validate
+      expect(@user.errors.full_messages).not_to be_empty
+    end
+    
+    it "should not be valid if password is less than 3 characters" do
+      @user.password = '12'
+      @user.save
+      expect(@user.errors.full_messages).to include("Password is too short (minimum is 3 characters)")   
+    end
+
+  end
+
+  describe '.authenticate_with_credentials' do
+    it "should be authenticated successfully if email contains whitespace" do
+      @user = User.new(name: "Mohammed", last_name: "Abbas", email: "  Moh@mail.com   ", password: "123", password_confirmation: "123")
+      expect(@user.errors.full_messages).to be_empty
+    end
+
+    it "should be authenticated successfully if email contains wrong case" do
+      @user = User.new(name: "Mohammed", last_name: "Abbas", email: "MoH@mail.coM", password: "123", password_confirmation: "123")
+      expect(@user.errors.full_messages).to be_empty
+    end
+
+  end
+
+
 end
+
