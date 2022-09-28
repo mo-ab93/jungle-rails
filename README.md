@@ -1,9 +1,47 @@
 # Jungle
 
-A mini e-commerce application built with Rails 6.1 for purposes of teaching Rails by example.
+Jungle is a mini e-commerce application built with Rails 6.1.
+
+## <ins>Added Features</ins>
+
+### User Authentication
+* Full User Registration & Authenticaion system, utilizing bcrypt for hashed passwords.
+
+### Admin Controls
+* Implemented Admin authentication requirement for all Admin actions.
+
+* Admins have ability to view and create new categories.
+
+* Admins can create new products assigned to newly created categories.
+
+### Store features
+* Dynamically added Sold-out badges on out of stock products
+
+* Empty Cart Indicator
+
+* Developed an Order Summary page
+* Stripe payment integration
+
+## Final Product
+!['final-product']()
+!['final-product']()
+!['final-product']()
+!['final-product']()
+!['final-product']()
+!['final-product']()
+!['final-product']()
+!['final-product']()
+
+
+## Dependencies
+
+- Rails 6.1 [Rails Guide](http://guides.rubyonrails.org/v6.1/)
+- Bootstrap 5
+- PostgreSQL 9.x
+- Stripe
+
 
 ## Setup
-
 1. Run `bundle install` to install dependencies
 2. Create `config/database.yml` by copying `config/database.example.yml`
 3. Create `config/secrets.yml` by copying `config/secrets.example.yml`
@@ -13,19 +51,11 @@ A mini e-commerce application built with Rails 6.1 for purposes of teaching Rail
 7. Put Stripe (test) keys into appropriate .env vars
 8. Run `bin/rails s -b 0.0.0.0` to start the server
 
-## Database
-
-If Rails is complaining about authentication to the database, uncomment the user and password fields from `config/database.yml` in the development and test sections, and replace if necessary the user and password `development` to an existing database user.
-
 ## Stripe Testing
 
 Use Credit Card # 4111 1111 1111 1111 for testing success scenarios.
 
 More information in their docs: <https://stripe.com/docs/testing#cards>
 
-## Dependencies
 
-- Rails 6.1 [Rails Guide](http://guides.rubyonrails.org/v6.1/)
-- Bootstrap 5
-- PostgreSQL 9.x
-- Stripe
+
