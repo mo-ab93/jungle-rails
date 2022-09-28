@@ -23,14 +23,14 @@ Jungle is a mini e-commerce application built with Rails 6.1.
 * Stripe payment integration
 
 ## Final Product
-!['final-product']()
-!['final-product']()
-!['final-product']()
-!['final-product']()
-!['final-product']()
-!['final-product']()
-!['final-product']()
-!['final-product']()
+!['final-product'](https://github.com/mo-ab93/jungle-rails/blob/master/app/assets/images/Screen%20Shot%202022-09-28%20at%202.54.27%20PM%202.png)
+!['final-product'](https://github.com/mo-ab93/jungle-rails/blob/master/app/assets/images/Screen%20Shot%202022-09-28%20at%202.56.08%20PM%20(2).png)
+!['final-product'](https://github.com/mo-ab93/jungle-rails/blob/master/app/assets/images/Screen%20Shot%202022-09-28%20at%202.59.44%20PM%20(2).png)
+!['final-product'](https://github.com/mo-ab93/jungle-rails/blob/master/app/assets/images/Screen%20Shot%202022-09-28%20at%203.02.24%20PM%20(2).png)
+!['final-product'](https://github.com/mo-ab93/jungle-rails/blob/master/app/assets/images/Screen%20Shot%202022-09-28%20at%203.03.25%20PM%20(2).png)
+!['final-product'](https://github.com/mo-ab93/jungle-rails/blob/master/app/assets/images/Screen%20Shot%202022-09-28%20at%203.05.05%20PM%20(2).png)
+!['final-product'](https://github.com/mo-ab93/jungle-rails/blob/master/app/assets/images/Screen%20Shot%202022-09-28%20at%203.06.12%20PM%20(2).png)
+!['final-product'](https://github.com/mo-ab93/jungle-rails/blob/master/app/assets/images/Screen%20Shot%202022-09-28%20at%203.07.23%20PM%20(2).png)
 
 
 ## Dependencies
